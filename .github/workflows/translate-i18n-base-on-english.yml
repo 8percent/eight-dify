@@ -13,7 +13,7 @@ jobs:
       run:
         working-directory: web
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 2 # last 2 commits
           persist-credentials: false
@@ -33,7 +33,7 @@ jobs:
 
       - name: Set up Node.js
         if: env.FILES_CHANGED == 'true'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 'lts/*'
 
@@ -47,7 +47,7 @@ jobs:
 
       - name: Create Pull Request
         if: env.FILES_CHANGED == 'true'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: Update i18n files based on en-US changes
           title: 'chore: translate i18n files'
